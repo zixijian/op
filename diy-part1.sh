@@ -14,5 +14,16 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+
+######添加自定义源（可选）##########
+cat >> feeds.conf.default <<EOF
+src-git kenzo https://github.com/kenzok8/openwrt-packages
+src-git nas https://github.com/linkease/nas-packages.git
+src-git jerrykuku https://github.com/jerrykuku/openwrt-package
+src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main
+src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main
+
+EOF
+####################################
