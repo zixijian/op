@@ -82,6 +82,14 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
+    - name: Import external feeds
+      working-directory: ./openwrt
+      run: |
+        git clone --depth 1 -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+        git clone --depth 1 -b main https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+        git clone --depth 1 -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall_package
+        cp -rf package/passwall_package/* package/passwall/
+
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
